@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Inbox</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== SAME DESIGN SYSTEM AS index.html ===== */
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--glass:rgba(17,24,39,.04);
+  --radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:flex;gap:24px;padding:24px}
+.col-left{width:360px}.col-center{flex:1}.col-right{width:320px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.avatar{width:42px;height:42px;border-radius:10px;background:var(--glass);
+display:flex;align-items:center;justify-content:center;font-weight:700}
+.conv{display:flex;gap:12px;padding:10px;border-radius:10px;cursor:pointer}
+.conv.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.chat{height:70vh;display:flex;flex-direction:column;border-radius:12px;
+border:1px solid var(--border);overflow:hidden}
+.chat-body{flex:1;padding:16px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:70%;padding:12px;border-radius:12px}
+.in{align-self:flex-start;background:var(--card);border:1px solid var(--border)}
+.out{align-self:flex-end;background:var(--primary);color:#fff}
+.input{padding:10px;border-radius:10px;border:1px solid var(--border);width:100%}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn active" href="inbox.html">💬</a>
+    <a class="icon-btn" href="contacts.html">👥</a>
+    <a class="icon-btn" href="campaigns.html">📢</a>
+    <a class="icon-btn" href="automations.html">🔁</a>
+    <a class="icon-btn" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Inbox</strong>
+      <button id="themeToggle">🌓</button>
+    </header>
+
+    <section class="content">
+      <!-- LEFT -->
+      <div class="col-left">
+        <div class="card">
+          <div class="conv active">
+            <div class="avatar">JD</div>
+            <div>
+              <strong>John Doe</strong><br>
+              <small>Order #1234</small>
+            </div>
+          </div>
+          <div class="conv">
+            <div class="avatar">EM</div>
+            <div>
+              <strong>Emily</strong><br>
+              <small>Refund request</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER -->
+      <div class="col-center">
+        <div class="chat card">
+          <div class="chat-body">
+            <div class="msg in">Hi, I have a question about my order.</div>
+            <div class="msg out">Sure! How can I help you?</div>
+            <div class="msg in">Can I change the address?</div>
+          </div>
+          <div style="padding:12px;border-top:1px solid var(--border)">
+            <input class="input" placeholder="Type message…" />
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-right">
+        <div class="card">
+          <strong>Customer Info</strong>
+          <p>John Doe<br>+1 555 123 4567</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme=
+    document.body.dataset.theme==='dark'?'light':'dark'
+}
+</script>
+</body>
+</html>

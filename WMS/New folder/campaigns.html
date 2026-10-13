@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Campaigns</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--success:#16A34A;--warning:#F59E0B;
+  --glass:rgba(17,24,39,.04);--radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --success:#22C55E;--warning:#FBBF24;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:flex;gap:24px;padding:24px}
+.col-left{width:280px}.col-center{flex:1}.col-right{width:320px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th{text-align:left;font-size:13px;color:var(--muted);padding:10px}
+.table td{padding:10px;border-top:1px solid var(--border)}
+.badge{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600}
+.sent{background:rgba(22,163,74,.15);color:var(--success)}
+.scheduled{background:rgba(245,158,11,.15);color:var(--warning)}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn" href="inbox.html">💬</a>
+    <a class="icon-btn" href="contacts.html">👥</a>
+    <a class="icon-btn active" href="campaigns.html">📢</a>
+    <a class="icon-btn" href="automations.html">🔁</a>
+    <a class="icon-btn" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Campaigns</strong>
+      <div>
+        <a class="btn secondary" href="template_builder.html">Templates</a>
+        <a class="btn" href="campaign_builder.html">Create Campaign</a>
+        <button id="themeToggle">🌓</button>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT -->
+      <aside class="col-left">
+        <div class="card">
+          <h4>Campaign Types</h4>
+          <p>• Broadcast</p>
+          <p>• Scheduled</p>
+          <p>• Recurring</p>
+        </div>
+
+        <div class="card">
+          <h4>Quick Stats</h4>
+          <p>Total Campaigns: <strong>18</strong></p>
+          <p>Messages Sent: <strong>12,430</strong></p>
+        </div>
+      </aside>
+
+      <!-- CENTER -->
+      <section class="col-center">
+        <div class="card">
+          <h2>All Campaigns</h2>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Audience</th>
+                <th>Sent</th>
+                <th>Open Rate</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Winter Sale</td>
+                <td><span class="badge sent">Sent</span></td>
+                <td>All Customers</td>
+                <td>2,312</td>
+                <td>74%</td>
+                <td><a href="analytics.html">View</a></td>
+              </tr>
+              <tr>
+                <td>Abandoned Cart Reminder</td>
+                <td><span class="badge scheduled">Scheduled</span></td>
+                <td>Abandoned Segment</td>
+                <td>—</td>
+                <td>—</td>
+                <td><a href="campaign_builder.html">Edit</a></td>
+              </tr>
+              <tr>
+                <td>New Year Blast</td>
+                <td><span class="badge sent">Sent</span></td>
+                <td>VIP</td>
+                <td>5,000</td>
+                <td>81%</td>
+                <td><a href="analytics.html">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside class="col-right">
+        <div class="card">
+          <h4>Delivery Health</h4>
+          <p>Delivered: <strong>96%</strong></p>
+          <p>Failed: <strong>1%</strong></p>
+        </div>
+
+        <div class="card">
+          <h4>WhatsApp Compliance</h4>
+          <p>Templates Approved: <strong>12</strong></p>
+          <p>Pending Review: <strong>2</strong></p>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme=
+    document.body.dataset.theme==='dark'?'light':'dark'
+}
+</script>
+</body>
+</html>

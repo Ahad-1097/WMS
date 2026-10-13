@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contacts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--glass:rgba(17,24,39,.04);
+  --radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:flex;gap:24px;padding:24px}
+.col-left{width:300px}.col-center{flex:1}.col-right{width:320px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.input{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border)}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th{text-align:left;font-size:13px;color:var(--muted);padding:10px}
+.table td{padding:10px;border-top:1px solid var(--border)}
+.tag{display:inline-block;background:var(--glass);padding:4px 8px;border-radius:999px;font-size:12px}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn" href="inbox.html">💬</a>
+    <a class="icon-btn active" href="contacts.html">👥</a>
+    <a class="icon-btn" href="campaigns.html">📢</a>
+    <a class="icon-btn" href="automations.html">🔁</a>
+    <a class="icon-btn" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Contacts</strong>
+      <button id="themeToggle">🌓</button>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT FILTERS -->
+      <aside class="col-left">
+        <div class="card">
+          <h4>Segments</h4>
+          <div class="tag">All Customers</div>
+          <div class="tag">VIP</div>
+          <div class="tag">Abandoned Cart</div>
+          <div class="tag">High Value</div>
+        </div>
+
+        <div class="card">
+          <h4>Filters</h4>
+          <label>Status</label>
+          <select class="input">
+            <option>All</option>
+            <option>Active</option>
+            <option>Blocked</option>
+          </select>
+          <label style="margin-top:8px">Country</label>
+          <select class="input">
+            <option>All</option>
+            <option>US</option>
+            <option>UK</option>
+            <option>IN</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- CENTER TABLE -->
+      <section class="col-center">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h2>All Contacts</h2>
+            <button class="btn">Add Contact</button>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Tags</th>
+                <th>Last Seen</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>+1 555 123 4567</td>
+                <td><span class="tag">VIP</span></td>
+                <td>10 min ago</td>
+                <td><a href="inbox.html">Open Chat</a></td>
+              </tr>
+              <tr>
+                <td>Emily Matthews</td>
+                <td>+44 20 7946</td>
+                <td><span class="tag">Newsletter</span></td>
+                <td>1 day ago</td>
+                <td><a href="inbox.html">Open Chat</a></td>
+              </tr>
+              <tr>
+                <td>Mohit Kumar</td>
+                <td>+91 98765 43210</td>
+                <td><span class="tag">Abandoned</span></td>
+                <td>2 days ago</td>
+                <td><a href="inbox.html">Open Chat</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL -->
+      <aside class="col-right">
+        <div class="card">
+          <h4>Contact Insights</h4>
+          <p>Total Contacts: <strong>12,430</strong></p>
+          <p>Active Last 7 Days: <strong>3,210</strong></p>
+        </div>
+
+        <div class="card">
+          <h4>Import / Export</h4>
+          <button class="btn secondary">Import CSV</button>
+          <button class="btn secondary" style="margin-top:8px">Export CSV</button>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme=
+    document.body.dataset.theme==='dark'?'light':'dark'
+}
+</script>
+</body>
+</html>

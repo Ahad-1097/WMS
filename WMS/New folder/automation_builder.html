@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Automation Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--success:#16A34A;--danger:#DC2626;
+  --glass:rgba(17,24,39,.04);--radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --success:#22C55E;--danger:#EF4444;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:flex;gap:24px;padding:24px}
+.col-left{width:260px}.col-center{flex:1}.col-right{width:300px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.node{background:var(--glass);border:1px dashed var(--border);
+border-radius:12px;padding:12px;margin-bottom:12px}
+.node h4{margin:0 0 4px 0}
+.canvas{border:2px dashed var(--border);border-radius:16px;
+padding:24px;min-height:420px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.02))}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn" href="inbox.html">💬</a>
+    <a class="icon-btn" href="contacts.html">👥</a>
+    <a class="icon-btn" href="campaigns.html">📢</a>
+    <a class="icon-btn active" href="automations.html">🔁</a>
+    <a class="icon-btn" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Automation Builder</strong>
+      <div>
+        <a class="btn secondary" href="automations.html">Back</a>
+        <button class="btn">Publish</button>
+        <button id="themeToggle">🌓</button>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT: NODES -->
+      <aside class="col-left">
+        <div class="card">
+          <h4>Triggers</h4>
+          <div class="node">Cart Abandoned</div>
+          <div class="node">Order Created</div>
+          <div class="node">Message Received</div>
+        </div>
+
+        <div class="card">
+          <h4>Actions</h4>
+          <div class="node">Send WhatsApp</div>
+          <div class="node">Wait</div>
+          <div class="node">Add Tag</div>
+        </div>
+      </aside>
+
+      <!-- CENTER: CANVAS -->
+      <section class="col-center">
+        <div class="canvas">
+          <div class="node">
+            <h4>Trigger</h4>
+            <p>Cart Abandoned</p>
+          </div>
+
+          <div class="node">
+            <h4>Delay</h4>
+            <p>Wait 1 hour</p>
+          </div>
+
+          <div class="node">
+            <h4>Action</h4>
+            <p>Send WhatsApp Message</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: SETTINGS -->
+      <aside class="col-right">
+        <div class="card">
+          <h4>Node Settings</h4>
+          <p style="color:var(--muted)">Select a node to configure its properties</p>
+        </div>
+
+        <div class="card">
+          <h4>Automation Info</h4>
+          <p>Status: <strong>Draft</strong></p>
+          <p>Created By: <strong>Ahad</strong></p>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme =
+    document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+</script>
+</body>
+</html>

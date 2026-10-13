@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFFFFF;--sidebar:#FFFFFF;
+  --text:#111827;--muted:#6B7280;--border:#E5E7EB;
+  --primary:#2563EB;--success:#16A34A;--warning:#F59E0B;
+  --glass:rgba(17,24,39,.04);--radius:12px;
+  --shadow:0 6px 18px rgba(16,24,40,.06);
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;
+  --text:#F9FAFB;--muted:#9CA3AF;--border:#1E293B;
+  --primary:#60A5FA;--success:#22C55E;--warning:#FBBF24;
+  --glass:rgba(255,255,255,.03);
+  --shadow:0 8px 20px rgba(2,6,23,.6);
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+
+.app{display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{
+  width:64px;background:var(--sidebar);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  align-items:center;padding:12px 8px
+}
+.logo{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),#60A5FA);
+  color:#fff;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow)
+}
+.nav{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.nav a{
+  width:48px;height:48px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);text-decoration:none
+}
+.nav a.active{
+  background:linear-gradient(180deg,var(--primary),#2b6edc);
+  color:#fff;box-shadow:var(--shadow)
+}
+.theme-toggle{
+  margin-top:auto;width:40px;height:40px;
+  border-radius:10px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;background:var(--card)
+}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{
+  height:64px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:var(--card)
+}
+.search{
+  width:420px;display:flex;gap:8px;align-items:center;
+  padding:8px 12px;border-radius:10px;
+  border:1px solid var(--border);background:var(--bg)
+}
+.search input{border:0;outline:none;background:none;width:100%}
+.btn{
+  background:var(--primary);color:#fff;
+  border:0;padding:10px 14px;border-radius:10px;
+  cursor:pointer;font-weight:600
+}
+.btn.secondary{
+  background:transparent;color:var(--text);
+  border:1px solid var(--border)
+}
+
+/* CONTENT */
+.content{
+  padding:24px;display:grid;
+  grid-template-columns:280px 1fr 320px;
+  gap:24px
+}
+.card{
+  background:var(--card);border-radius:var(--radius);
+  padding:16px;border:1px solid var(--border);
+  box-shadow:var(--shadow)
+}
+.kpis{display:flex;gap:12px}
+.kpi{flex:1}
+.kpi h4{margin:0;color:var(--muted);font-size:13px}
+.kpi p{margin:6px 0 0;font-size:22px;font-weight:800}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.item{
+  padding:10px;border-radius:10px;
+  border:1px solid transparent;cursor:pointer
+}
+.item:hover{background:var(--glass);border-color:var(--border)}
+
+.chat{
+  height:420px;border:1px solid var(--border);
+  border-radius:12px;display:flex;flex-direction:column
+}
+.chat-body{
+  flex:1;padding:16px;display:flex;
+  flex-direction:column;gap:10px
+}
+.msg{
+  max-width:70%;padding:12px;border-radius:12px
+}
+.in{background:var(--card);border:1px solid var(--border)}
+.out{align-self:flex-end;background:var(--primary);color:#fff}
+
+.footer{
+  text-align:center;color:var(--muted);
+  font-size:13px;padding:12px
+}
+
+@media(max-width:1100px){
+  .content{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body data-theme="light">
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">SA</div>
+    <nav class="nav">
+      <a class="active" href="index.html">🏠</a>
+      <a href="inbox.html">💬</a>
+      <a href="contacts.html">👥</a>
+      <a href="campaigns.html">📢</a>
+      <a href="automations.html">🔁</a>
+        <a  href="shopify_abandoned_cart.html">🏬</a>
+      <a href="analytics.html">📊</a>
+      <a href="billing.html">💳</a>
+      <a href="settings.html">⚙️</a>
+    </nav>
+    <div class="theme-toggle" id="themeToggle">🌓</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="topbar">
+      <strong>Dashboard</strong>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="search">
+          🔍 <input placeholder="Search messages, users, campaigns"/>
+        </div>
+        <a class="btn secondary" href="campaigns.html">Campaigns</a>
+        <a class="btn" href="campaign_builder.html">New Campaign</a>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT -->
+      <aside class="card">
+        <h3>Inbox</h3>
+        <div class="list">
+          <div class="item"><strong>John Doe</strong><br><small>Order #1234</small></div>
+          <div class="item"><strong>Emily</strong><br><small>Refund request</small></div>
+        </div>
+      </aside>
+
+      <!-- CENTER -->
+      <section>
+        <div class="card">
+          <h2>Overview</h2>
+          <div class="kpis">
+            <div class="kpi"><h4>Messages (30d)</h4><p>12,430</p></div>
+            <div class="kpi"><h4>Campaigns</h4><p>18</p></div>
+            <div class="kpi"><h4>Usage</h4><p>4,213 / 10k</p></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Live Conversation</h3>
+          <div class="chat">
+            <div class="chat-body">
+              <div class="msg in">Hi, I need help with my order.</div>
+              <div class="msg out">Sure! How can I assist?</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside class="card">
+        <h3>Quick Stats</h3>
+        <p>Delivery Rate: <strong>96%</strong></p>
+        <p>Open Rate: <strong>74%</strong></p>
+        <p>Recovered Revenue: <strong>$18,920</strong></p>
+      </aside>
+
+    </section>
+
+    <div class="footer">WhatsApp Messaging Platform • Dashboard</div>
+
+  </main>
+</div>
+
+<script>
+document.getElementById("themeToggle").onclick = () => {
+  document.body.dataset.theme =
+    document.body.dataset.theme === "dark" ? "light" : "dark";
+};
+</script>
+
+</body>
+</html>
+

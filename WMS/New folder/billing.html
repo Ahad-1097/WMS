@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Billing & Usage</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--success:#16A34A;--warning:#F59E0B;
+  --danger:#DC2626;--glass:rgba(17,24,39,.04);
+  --radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --success:#22C55E;--warning:#FBBF24;--danger:#EF4444;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:grid;grid-template-columns:2fr 1fr;gap:24px;padding:24px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.progress{height:10px;background:var(--glass);border-radius:6px;overflow:hidden;margin-top:6px}
+.progress span{display:block;height:100%;background:var(--primary)}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th{text-align:left;font-size:13px;color:var(--muted);padding:10px}
+.table td{padding:10px;border-top:1px solid var(--border)}
+.badge{padding:4px 8px;border-radius:999px;font-size:12px}
+.ok{background:rgba(22,163,74,.15);color:var(--success)}
+.warn{background:rgba(245,158,11,.15);color:var(--warning)}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn" href="inbox.html">💬</a>
+    <a class="icon-btn" href="contacts.html">👥</a>
+    <a class="icon-btn" href="campaigns.html">📢</a>
+    <a class="icon-btn" href="automations.html">🔁</a>
+    <a class="icon-btn active" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Billing & Usage</strong>
+      <button id="themeToggle">🌓</button>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT -->
+      <section>
+        <div class="card">
+          <h3>Current Plan — Business</h3>
+          <p style="color:var(--muted)">Renews on Jan 01, 2026</p>
+
+          <h4>WhatsApp Messages</h4>
+          <p>Used <strong>4,213</strong> of <strong>10,000</strong></p>
+          <div class="progress"><span style="width:42%"></span></div>
+          <span class="badge ok">Within limit</span>
+
+          <h4 style="margin-top:16px">Automations</h4>
+          <p>Used <strong>3</strong> of <strong>5</strong></p>
+          <div class="progress"><span style="width:60%"></span></div>
+        </div>
+
+        <div class="card">
+          <h3>Invoices</h3>
+          <table class="table">
+            <tr><th>Date</th><th>Amount</th><th>Status</th></tr>
+            <tr><td>Dec 01, 2025</td><td>$199</td><td>Paid</td></tr>
+            <tr><td>Nov 01, 2025</td><td>$199</td><td>Paid</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside>
+        <div class="card">
+          <h4>Payment Method</h4>
+          <p>Visa •••• 4242</p>
+          <button class="btn">Update Card</button>
+        </div>
+
+        <div class="card">
+          <h4>Overage Policy</h4>
+          <p style="color:var(--muted)">Extra messages billed at $0.01 per message.</p>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme =
+    document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+</script>
+</body>
+</html>

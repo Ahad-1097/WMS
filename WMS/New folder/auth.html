@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;
+  --glass:rgba(17,24,39,.04);--radius:14px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{
+  margin:0;background:linear-gradient(135deg,#2563EB 0%,#60A5FA 100%);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+}
+.container{width:420px}
+.card{
+  background:var(--card);border-radius:16px;padding:28px;
+  border:1px solid var(--border);box-shadow:var(--shadow)
+}
+h2{margin-top:0}
+.input{
+  width:100%;padding:12px;border-radius:10px;
+  border:1px solid var(--border);margin-top:8px
+}
+.btn{
+  width:100%;margin-top:16px;padding:12px;
+  border-radius:10px;border:0;background:var(--primary);color:#fff;
+  font-size:15px;font-weight:600;cursor:pointer
+}
+.link{color:var(--primary);text-decoration:none;font-size:13px}
+.muted{color:var(--muted);font-size:13px}
+.divider{
+  text-align:center;margin:16px 0;color:var(--muted);font-size:13px
+}
+.oauth{
+  display:flex;gap:12px;margin-top:12px
+}
+.oauth button{
+  flex:1;padding:10px;border-radius:10px;border:1px solid var(--border);
+  background:transparent;cursor:pointer
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="card">
+    <h2>Sign in to your workspace</h2>
+    <p class="muted">Use your work email to continue</p>
+
+    <label>Email</label>
+    <input class="input" placeholder="you@company.com"/>
+
+    <label style="margin-top:12px">Password</label>
+    <input class="input" type="password" placeholder="••••••••"/>
+
+    <button class="btn" onclick="location.href='index.html'">Sign In</button>
+
+    <div style="display:flex;justify-content:space-between;margin-top:12px">
+      <a class="link" href="#">Forgot password?</a>
+      <a class="link" href="onboarding.html">Create workspace</a>
+    </div>
+
+    <div class="divider">OR</div>
+
+    <div class="oauth">
+      <button>Google</button>
+      <button>Microsoft</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

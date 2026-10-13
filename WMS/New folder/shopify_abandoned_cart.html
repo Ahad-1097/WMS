@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shopify — Abandoned Carts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--sidebar:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--success:#16A34A;--warning:#F59E0B;
+  --glass:rgba(17,24,39,.04);--radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--sidebar:#0B1220;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --success:#22C55E;--warning:#FBBF24;
+  --glass:rgba(255,255,255,.03);--shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}
+.sidebar{width:64px;background:var(--sidebar);border-right:1px solid var(--border);
+display:flex;flex-direction:column;align-items:center;padding:12px 8px}
+.icon-btn{width:48px;height:48px;border-radius:10px;display:flex;
+align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+.icon-btn.active{background:linear-gradient(180deg,var(--primary),#2b6edc);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{height:64px;display:flex;justify-content:space-between;align-items:center;
+padding:0 24px;border-bottom:1px solid var(--border)}
+.content{flex:1;display:flex;gap:24px;padding:24px}
+.col-left{width:260px}.col-center{flex:1}.col-right{width:320px}
+.card{background:var(--card);border-radius:12px;padding:16px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th{text-align:left;font-size:13px;color:var(--muted);padding:10px}
+.table td{padding:10px;border-top:1px solid var(--border)}
+.badge{padding:4px 8px;border-radius:999px;font-size:12px}
+.pending{background:rgba(245,158,11,.15);color:var(--warning)}
+.recovered{background:rgba(22,163,74,.15);color:var(--success)}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="icon-btn" href="index.html">🏠</a>
+    <a class="icon-btn" href="inbox.html">💬</a>
+    <a class="icon-btn" href="contacts.html">👥</a>
+    <a class="icon-btn" href="campaigns.html">📢</a>
+    <a class="icon-btn" href="automations.html">🔁</a>
+    <a class="icon-btn active" href="shopify_abandoned_cart.html">🏬</a>
+    <a class="icon-btn" href="analytics.html">📊</a>
+    <a class="icon-btn" href="billing.html">💳</a>
+    <a class="icon-btn" href="settings.html">⚙️</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <header class="topbar">
+      <strong>Shopify — Abandoned Carts</strong>
+      <button id="themeToggle">🌓</button>
+    </header>
+
+    <section class="content">
+
+      <!-- LEFT -->
+      <aside class="col-left">
+        <div class="card">
+          <h4>Sync Status</h4>
+          <p>Shopify Store: <strong>Connected</strong></p>
+          <p>Last Sync: <strong>5 minutes ago</strong></p>
+          <button class="btn secondary">Sync Now</button>
+        </div>
+
+        <div class="card">
+          <h4>Recovery Stats</h4>
+          <p>Recovered Revenue: <strong>$12,430</strong></p>
+          <p>Recovery Rate: <strong>18%</strong></p>
+        </div>
+      </aside>
+
+      <!-- CENTER -->
+      <section class="col-center">
+        <div class="card">
+          <h2>Abandoned Carts</h2>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Cart ID</th>
+                <th>Customer</th>
+                <th>Cart Value</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AC-1023</td>
+                <td>John Doe</td>
+                <td>$129.00</td>
+                <td><span class="badge pending">Pending</span></td>
+                <td><a href="automation_builder.html">Create Flow</a></td>
+              </tr>
+              <tr>
+                <td>AC-1041</td>
+                <td>Emily Matthews</td>
+                <td>$49.00</td>
+                <td><span class="badge recovered">Recovered</span></td>
+                <td><a href="analytics.html">View</a></td>
+              </tr>
+              <tr>
+                <td>AC-1055</td>
+                <td>Mohit Kumar</td>
+                <td>$89.00</td>
+                <td><span class="badge pending">Pending</span></td>
+                <td><a href="automation_builder.html">Create Flow</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside class="col-right">
+        <div class="card">
+          <h4>Recommended Automation</h4>
+          <p style="color:var(--muted)">
+            Send reminder after 1 hour → Follow up after 24 hours → Offer discount
+          </p>
+          <button class="btn">Use Template</button>
+        </div>
+
+        <div class="card">
+          <h4>Best Performing Message</h4>
+          <p>
+            “You left items in your cart 🛒 — complete your order now and save 10%!”
+          </p>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+</div>
+
+<script>
+document.getElementById('themeToggle').onclick=()=>{
+  document.body.dataset.theme =
+    document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+</script>
+</body>
+</html>

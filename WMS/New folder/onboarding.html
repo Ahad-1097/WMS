@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F8FAFC;--card:#FFF;--text:#111827;--muted:#6B7280;
+  --border:#E5E7EB;--primary:#2563EB;--success:#16A34A;
+  --glass:rgba(17,24,39,.04);--radius:12px;--shadow:0 6px 18px rgba(16,24,40,.06)
+}
+[data-theme="dark"]{
+  --bg:#0D1117;--card:#161B22;--text:#F9FAFB;
+  --muted:#9CA3AF;--border:#1E293B;--primary:#60A5FA;
+  --success:#22C55E;--glass:rgba(255,255,255,.03);
+  --shadow:0 8px 20px rgba(2,6,23,.6)
+}
+*{box-sizing:border-box;font-family:Inter}
+body{margin:0;background:var(--bg);color:var(--text);min-height:100vh;
+display:flex;align-items:center;justify-content:center}
+
+.container{width:100%;max-width:980px;padding:24px}
+.card{background:var(--card);border-radius:16px;padding:24px;
+border:1px solid var(--border);box-shadow:var(--shadow)}
+
+.steps{display:flex;justify-content:space-between;margin-bottom:24px}
+.step{flex:1;text-align:center;font-size:13px;color:var(--muted)}
+.step.active{color:var(--primary);font-weight:700}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.block{border:1px dashed var(--border);border-radius:12px;padding:16px}
+
+.btn{background:var(--primary);color:#fff;border:0;
+padding:10px 16px;border-radius:10px;cursor:pointer}
+.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+</style>
+</head>
+
+<body data-theme="light">
+<div class="container">
+
+  <div class="card">
+    <h2>Welcome to Your Workspace</h2>
+    <p style="color:var(--muted)">Complete these steps to start sending WhatsApp messages.</p>
+
+    <div class="steps">
+      <div class="step active">1. WhatsApp</div>
+      <div class="step">2. Shopify</div>
+      <div class="step">3. Billing</div>
+    </div>
+
+    <div class="grid">
+
+      <!-- WhatsApp -->
+      <div class="block">
+        <h3>Connect WhatsApp Business</h3>
+        <p style="color:var(--muted)">
+          Link your WhatsApp Business API number to start messaging customers.
+        </p>
+        <ul style="color:var(--muted)">
+          <li>Official Meta WhatsApp API</li>
+          <li>Template approval required</li>
+          <li>Secure webhooks</li>
+        </ul>
+        <button class="btn">Connect WhatsApp</button>
+      </div>
+
+      <!-- Shopify -->
+      <div class="block">
+        <h3>Connect Shopify (Optional)</h3>
+        <p style="color:var(--muted)">
+          Sync customers, orders, and abandoned carts automatically.
+        </p>
+        <ul style="color:var(--muted)">
+          <li>Abandoned cart recovery</li>
+          <li>Order notifications</li>
+          <li>Customer sync</li>
+        </ul>
+        <button class="btn secondary">Connect Shopify</button>
+      </div>
+
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px">
+      <a class="btn secondary" href="auth.html">Back</a>
+      <a class="btn" href="billing.html">Continue</a>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
